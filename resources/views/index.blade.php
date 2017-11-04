@@ -10,7 +10,7 @@
                 <div class="col-md-6 col-md-offset-3">
                     <div class="text-center">
                         <form action="/search">
-                            <input class="form-control form-control" type="text" required="" placeholder="Enter a book title, author, or ISBN" minlength="3" data-aos="fade-up" data-aos-delay="200" style="margin-top:21px;">
+                            <input class="form-control form-control" type="text" name="search" required="" placeholder="Enter a book title, author, or ISBN" minlength="3" data-aos="fade-up" data-aos-delay="200" style="margin-top:21px;">
                             <button class="btn btn-link btn-round" type="submit" data-aos="fade-up" data-aos-delay="300" style="background-color:#2cade3;color:#ffffff;padding-top:18px;padding-bottom:18px;padding-right:36px;padding-left:36px;margin:30px;">Search</button>
                         </form>  
                     </div>

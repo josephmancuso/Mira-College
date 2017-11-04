@@ -11,12 +11,17 @@
 |
 */
 
+use Scriptotek\GoogleBooks\GoogleBooks;
+
 Route::get('/', function () {
+       
     return view('index');
 });
 
 Route::get('/search', function () {
-    return view('search');
+    $books = new GoogleBooks(['maxResults' => 20]);
+    $results = $books->volumes->search($_GET['search']);
+    return view('search', compact('results'));
 });
 
 Route::get('/book', function () {

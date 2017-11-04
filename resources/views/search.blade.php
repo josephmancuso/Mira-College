@@ -10,26 +10,34 @@
     <section style="padding-top:20px;">
         <div class="container">
             <div class="row">
-                <div class="col-sm-4 text-center"><img src="img/Rich_Dad_Poor_Dad.jpg" style="height:200px;">
-                    <h4>Rich Dad Poor Dad</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dapibus felis et libero scelerisque, sed aliquet nulla tincidunt. Quisque lorem nisl, semper vitae mattis nec, vestibulum nec risus. Sed ut volutpat tortor, ut sodales
-                        diam.</p>
-                    <button class="btn btn-link btn-round" type="button" style="background-color:#2cade3;color:#ffffff;padding-top:18px;padding-bottom:18px;padding-right:36px;padding-left:36px;margin:0;">View </button>
-                </div>
-                <div class="col-sm-4 text-center"><img src="img/Rich_Dad_Poor_Dad.jpg" style="height:200px;">
-                    <h4>Rich Dad Poor Dad</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dapibus felis et libero scelerisque, sed aliquet nulla tincidunt. Quisque lorem nisl, semper vitae mattis nec, vestibulum nec risus. Sed ut volutpat tortor, ut sodales
-                        diam.</p>
-                    <a href="/book">
+
+                @foreach($results as $book)
+                
+                <div class="col-xs-12 col-sm-4 text-center">
+                    @if ($book->imageLinks)
+                        <img src="{{ $book->imageLinks->smallThumbnail }}" style="height:200px;">
+                    @endif
+                    
+                    <h4>{{ $book->title }}</h4>
+                    <h3>Author: {{$book->authors[0]}}</h3>
+                    <h3></h3>
+
+                    <p>
+                    @if ($book->searchInfo)
+                        {!! $book->searchInfo->textSnippet !!}
+                    @else
+                        @unless($book->description)
+                            No Description Available
+                        @endunless
+                        {!! $book->description !!}
+                    @endif
+                    </p>
+                    <a href="/book/{{ $book->id }}">
                         <button class="btn btn-link btn-round" type="button" style="background-color:#2cade3;color:#ffffff;padding-top:18px;padding-bottom:18px;padding-right:36px;padding-left:36px;margin:0;">View </button>
                     </a>
                 </div>
-                <div class="col-sm-4 text-center"><img src="img/Rich_Dad_Poor_Dad.jpg" style="height:200px;">
-                    <h4>Rich Dad Poor Dad</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dapibus felis et libero scelerisque, sed aliquet nulla tincidunt. Quisque lorem nisl, semper vitae mattis nec, vestibulum nec risus. Sed ut volutpat tortor, ut sodales
-                        diam.</p>
-                    <button class="btn btn-link btn-round" type="button" style="background-color:#2cade3;color:#ffffff;padding-top:18px;padding-bottom:18px;padding-right:36px;padding-left:36px;margin:0;">View </button>
-                </div>
+                @endforeach
+                
             </div>
         </div>
     </section>
