@@ -24,8 +24,10 @@ Route::get('/search', function () {
     return view('search', compact('results'));
 });
 
-Route::get('/book', function () {
-    return view('book');
+Route::get('/book/{bookId}', function ($bookId) {
+    $books = new GoogleBooks();
+    $book = $books->volumes->get($bookId);
+    return view('book', compact('book'));
 });
 
 
