@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Laravel\Dusk\DuskServiceProvider;
 
+use App\Emails;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -18,7 +20,12 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         \Validator::extend('email_domain', function($attribute, $value, $parameters, $validator) {
-            $allowedEmailDomains = ['student.sjcny.edu'];
+            
+            $allowedEmailDomains = [];
+
+            foreach(Emails::all() as $email) {
+                $allowedEmailDomains[] = $email->email;
+            }
             return in_array(explode('@', $parameters[0])[1], $allowedEmailDomains);
         });
     }
