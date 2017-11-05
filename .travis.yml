@@ -2,11 +2,8 @@ language: php
 php:
   - 7.1
 
-install:
-  - travis_retry composer install --no-interaction --prefer-dist --no-suggest
-
 before_script:
-  - php artisan serve
+  - composer install --no-interaction
 
 script:
   - vendor/bin/phpunit
