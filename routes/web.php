@@ -12,6 +12,7 @@
 */
 
 use Scriptotek\GoogleBooks\GoogleBooks;
+use App\Emails;
 
 Route::get('/', function () {
     return view('index');
@@ -33,8 +34,6 @@ Route::get('/book/{bookId}', function ($bookId) {
     $book = $books->volumes->get($bookId);
     return view('book', compact('book'));
 });
-
-
 
 Auth::routes();
 

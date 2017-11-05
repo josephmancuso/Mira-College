@@ -21,6 +21,10 @@
                         {!! str_limit($book->description, 200, '...') !!}
                     @endif
                     </p>
+                    @auth
+                        <div class="alert alert-warning">This book will be sent to: {{ Auth::user()->getSchool()->name }}</div>
+                    @endauth
+                    
                     <button class="btn btn-link btn-round" type="button" style="background-color:#2cade3;color:#ffffff;padding-top:18px;padding-bottom:18px;padding-right:36px;padding-left:36px;margin:0;">Checkout </button>
                 </div>
                 <div class="col-md-8">
