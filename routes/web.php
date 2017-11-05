@@ -14,12 +14,16 @@
 use Scriptotek\GoogleBooks\GoogleBooks;
 
 Route::get('/', function () {
-       
     return view('index');
+});
+
+Route::get('/login', function(){
+    return view('login');
 });
 
 Route::get('/search', function () {
     $books = new GoogleBooks(['maxResults' => 20]);
+    
     $results = $books->volumes->search($_GET['search']);
     return view('search', compact('results'));
 });
@@ -31,3 +35,7 @@ Route::get('/book/{bookId}', function ($bookId) {
 });
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

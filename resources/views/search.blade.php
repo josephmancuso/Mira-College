@@ -1,14 +1,10 @@
 @extends('layouts.base')
 
 @section('content')
-    <section class="header-section">
-        <div class="container" style="margin-top:0px;z-index:100">
-            <div style="margin-top:30vh;">
-                <h1 class="text-center" data-aos="fade-up" style="margin-top:20px;color:#ffffff;font-size:51px;">Find Your Book</h1></div>
-        </div>
-    </section>
     <section style="padding-top:20px;">
         <div class="container">
+        <h2>Showing Results For: {{ $_GET['search'] }}</h2>
+        <hr>
             <div class="row">
 
                 @foreach($results as $book)
