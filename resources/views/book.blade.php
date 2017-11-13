@@ -5,20 +5,19 @@
         <div class="container" style="padding-top:20px;">
             <div class="row">
                 <div class="col-md-4 text-center">
-                    @if ($book->imageLinks)
-                        <img src="{{ $book->imageLinks->thumbnail }}" style="height:200px;">
+                    @if (isset($book->volumeInfo->imageLinks))
+                        <img src="{{ $book->volumeInfo->imageLinks->thumbnail }}" style="height:200px;">
                     @endif
                     
-                    <h2>{{ $book->title }}</h2>
+                    <h2>{{ $book->volumeInfo->title }}</h2>
 
                     <p>
-                    @if ($book->searchInfo)
+                    @if (isset($book->searchInfo))
                         {!! $book->searchInfo->textSnippet !!}
+                    @elseif(isset($book->volumeInfo->description))
+                        {!! str_limit($book->volumeInfo->description, 200, '...') !!}
                     @else
-                        @unless($book->description)
-                            No Description Available
-                        @endunless
-                        {!! str_limit($book->description, 200, '...') !!}
+                        No description available
                     @endif
                     </p>
                     @auth
@@ -41,7 +40,7 @@
                         
                     @endauth
                     <h2>Description </h2>
-                    <p>{{ $book->description }}</p>
+                    <p>{{ $book->volumeInfo->description }}</p>
                 </div>
             </div>
         </div>

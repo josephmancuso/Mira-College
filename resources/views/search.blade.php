@@ -11,26 +11,28 @@
                 
                 <div class="row">
                     @foreach ($bookChunk as $book)
-
                     
-                
                     <div class="col-xs-12 col-sm-4 text-center">
-                        @if ($book->imageLinks)
-                            <img src="{{ $book->imageLinks->smallThumbnail }}" style="height:200px;">
+                        @if (isset($book->volumeInfo->imageLinks))
+                            <img src="{{ $book->volumeInfo->imageLinks->smallThumbnail }}" style="height:200px;">
                         @endif
                         
-                        <h4>{{ $book->title }}</h4>
-                        <h3>Author: {{$book->authors[0]}}</h3>
+                        <h4>{{ $book->volumeInfo->title }}</h4>
+                        @if (isset($book->volumeInfo->authors))
+                            <h3>Author: {{$book->volumeInfo->authors[0]}}</h3>
+                        @else
+                            No Author Available
+                        @endif
+                        
                         <h3></h3>
 
                         <p>
-                        @if ($book->searchInfo)
+                        @if (isset($book->searchInfo))
                             {!! $book->searchInfo->textSnippet !!}
+                        @elseif(isset($book->volumeInfo->description))
+                            {!! $book->volumeInfo->description !!}
                         @else
-                            @unless($book->description)
-                                No Description Available
-                            @endunless
-                            {!! $book->description !!}
+                            No Description Available
                         @endif
                         </p>
                         <a href="/book/{{ $book->id }}">

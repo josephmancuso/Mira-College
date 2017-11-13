@@ -6,12 +6,11 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
-        "antoineaugusti/google-books": "^0.3.0",
         "doctrine/dbal": "^2.6",
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
-        "scriptotek/google-books": "^0.2.2"
+        "scriptotek/google-books": "dev-master#3ad2389fc6e5683bdf380ae440532c1d1c0d66f9"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

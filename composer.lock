@@ -4,56 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "85bd8e4fc04e94a607e87831c10c1172",
+    "content-hash": "31c6e4839cedc7b6b2aa51e2fbc4c0fd",
     "packages": [
-        {
-            "name": "antoineaugusti/google-books",
-            "version": "v0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/AntoineAugusti/google-books.git",
-                "reference": "a275efe78ff5286e7eaad6f0b7391d493caedbdf"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/AntoineAugusti/google-books/zipball/a275efe78ff5286e7eaad6f0b7391d493caedbdf",
-                "reference": "a275efe78ff5286e7eaad6f0b7391d493caedbdf",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^6.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "AntoineAugusti\\Books\\": "src/",
-                    "AntoineAugusti\\Tests\\Books\\": "tests/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Antoine Augusti",
-                    "email": "antoine.augusti@gmail.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Simple Google Books API client",
-            "homepage": "https://github.com/AntoineAugusti/google-books",
-            "keywords": [
-                "ISBN",
-                "book",
-                "books",
-                "google"
-            ],
-            "time": "2017-02-03T11:51:50+00:00"
-        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
@@ -1889,16 +1841,16 @@
         },
         {
             "name": "scriptotek/google-books",
-            "version": "v0.2.3",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/scriptotek/php-google-books.git",
-                "reference": "55f3040817591a8af21649550dc374575985ee1a"
+                "reference": "3ad2389fc6e5683bdf380ae440532c1d1c0d66f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/scriptotek/php-google-books/zipball/55f3040817591a8af21649550dc374575985ee1a",
-                "reference": "55f3040817591a8af21649550dc374575985ee1a",
+                "url": "https://api.github.com/repos/scriptotek/php-google-books/zipball/3ad2389fc6e5683bdf380ae440532c1d1c0d66f9",
+                "reference": "3ad2389fc6e5683bdf380ae440532c1d1c0d66f9",
                 "shasum": ""
             },
             "require": {
@@ -1926,7 +1878,7 @@
             ],
             "description": "Package for interacting with the Google Books API",
             "homepage": "http://github.com/scriptotek/google-books",
-            "time": "2017-11-04T16:55:41+00:00"
+            "time": "2017-11-06T11:26:16+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2829,6 +2781,54 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "antoineaugusti/google-books",
+            "version": "v0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/AntoineAugusti/google-books.git",
+                "reference": "a275efe78ff5286e7eaad6f0b7391d493caedbdf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/AntoineAugusti/google-books/zipball/a275efe78ff5286e7eaad6f0b7391d493caedbdf",
+                "reference": "a275efe78ff5286e7eaad6f0b7391d493caedbdf",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AntoineAugusti\\Books\\": "src/",
+                    "AntoineAugusti\\Tests\\Books\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Antoine Augusti",
+                    "email": "antoine.augusti@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Simple Google Books API client",
+            "homepage": "https://github.com/AntoineAugusti/google-books",
+            "keywords": [
+                "ISBN",
+                "book",
+                "books",
+                "google"
+            ],
+            "time": "2017-02-03T11:51:50+00:00"
+        },
         {
             "name": "doctrine/instantiator",
             "version": "1.0.5",
@@ -4621,7 +4621,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "scriptotek/google-books": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
