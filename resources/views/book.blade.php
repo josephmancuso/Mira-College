@@ -22,10 +22,11 @@
                     </p>
                     @auth
                         <div class="alert alert-warning">This book will be sent to: {{ Auth::user()->getSchool()->name }}</div>
-                    @endauth
+                    
                     <form action="/book/register/{{ $book->id }}">
                         <button class="btn btn-link btn-round" type="submit" style="background-color:#2cade3;color:#ffffff;padding-top:18px;padding-bottom:18px;padding-right:36px;padding-left:36px;margin:0;">Checkout </button>
                     </form>
+                    @endauth
                 </div>
                 <div class="col-md-8">
                     <p>Rating: <i class="fa fa-star" style="color:#ffd700;"></i><i class="fa fa-star" style="color:#ffd700;"></i><i class="fa fa-star" style="color:#ffd700;"></i><i class="fa fa-star" style="color:#ffd700;"></i><i class="fa fa-star-half"
