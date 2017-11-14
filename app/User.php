@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use App\Emails;
+Use App\Orders;
 
 class User extends Authenticatable
 {
@@ -32,5 +33,10 @@ class User extends Authenticatable
     public function getSchool()
     {
         return Emails::where('email', explode('@',$this->email)[1])->first()->schools;
+    }
+
+    public function getOrders()
+    {
+        return Orders::where('user_id', $this->id)->get();
     }
 }

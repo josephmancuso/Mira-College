@@ -31,7 +31,6 @@ Route::get('/search', function () {
     
     $results = $books->volumes->search($_GET['search'])->chunk(3)->all();
 
-    // dd($results);
     return view('search', compact('results'));
 });
 
@@ -54,6 +53,26 @@ Route::get('/book/register/{id}', function($bookId){
     \Mail::to(Auth::user())->send(new BookOrdered(Auth::user()));
     return view('book-success');
 });
+
+Route::get('/dashboard', function(){
+    $books = new GoogleBooks;
+    $user = Auth::user();
+    if (!$user->is_staff) {
+        $orders = $user->getOrders();
+
+        $usersBooks = [];
+        foreach ($orders as $order) {
+            $usersBooks[] = $books->volumes->find($order->book_id);
+        }
+
+        $orderModel = new Orders;
+
+        return view('dashboard.user', compact('orders', 'usersBooks', 'orderModel'));
+    }
+
+    
+    
+})->middleware('auth');
 
 Auth::routes();
 
