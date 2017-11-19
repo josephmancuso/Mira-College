@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 use Scriptotek\GoogleBooks\GoogleBooks;
 
+use App\Status;
+
 class Orders extends Model
 {
     protected $table = "orders";
@@ -20,4 +22,13 @@ class Orders extends Model
     {
         return $this->book_information = (new GoogleBooks(['key' => getenv('GOOGLE_BOOKS_KEY')]))->volumes->find($this->book_id);
     } 
+
+    public function dropOff()
+    {
+        $pickup = Status::where('status', 'Ready for Pickup')->first();
+
+        $this->status = $pickup->id;
+
+        return $this->save();
+    }
 }

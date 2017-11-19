@@ -12,13 +12,16 @@
 */
 
 use Scriptotek\GoogleBooks\GoogleBooks;
+use Illuminate\Http\Request;
 
 use App\Emails;
 use App\Orders;
+use App\Status;
 
 use App\Mail\BookOrdered;
 
 Route::get('/', function () {
+    // die(phpinfo());
     return view('index');
 });
 
@@ -55,24 +58,43 @@ Route::get('/book/register/{id}', function($bookId){
 });
 
 Route::get('/dashboard', function(){
-    $books = new GoogleBooks;
     $user = Auth::user();
     if (!$user->is_staff) {
         $orders = $user->getOrders();
-
-        $usersBooks = [];
-        foreach ($orders as $order) {
-            $usersBooks[] = $books->volumes->find($order->book_id);
-        }
-
-        $orderModel = new Orders;
-
-        return view('dashboard.user', compact('orders', 'usersBooks', 'orderModel'));
+    } else {
+        $statuses = (new Status)->all();
+        $orders = (new Orders)->all();
     }
+    
+    return view('dashboard.user', compact('orders', 'statuses'));
+})->middleware('auth')->name('dashboard');
 
-    
-    
-})->middleware('auth');
+Route::post('/dashboard/order/{orderId}/status/update', function($orderId, Request $request){
+    $order = Orders::find($orderId);
+
+    $order->status = $request->input('status');
+
+    $order->save();
+
+    return redirect()->route('dashboard');
+});
+
+Route::post('/dashboard/order/{orderId}/dropoff', function($orderId){
+    $order = Orders::find($orderId);
+
+    $order->dropOff();
+
+    return redirect()->route('dashboard');
+});
+
+
+
+Route::get('dashboard/{status}', function($status){
+    $orders = Orders::where('status', $status)
+        ->where('user_id', Auth::user()->id)->get();
+
+    return view('dashboard.user', compact('orders'));
+});
 
 Auth::routes();
 
